@@ -12,8 +12,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <apache.poi.version>5.0.0</apache.poi.version>
-    <slf4j.version>1.7.30</slf4j.version>
+    <apache.poi.version>5.2.2</apache.poi.version>
+    <slf4j.version>2.0.0</slf4j.version>
   </properties>
 
   <developers>
@@ -117,21 +117,16 @@
       <artifactId>poi</artifactId>
       <version>${apache.poi.version}</version>
     </dependency>
+
     <dependency>
       <groupId>org.apache.poi</groupId>
       <artifactId>poi-ooxml</artifactId>
       <version>${apache.poi.version}</version>
     </dependency>
-<!--    <dependency>-->
-<!--      <groupId>org.apache.poi</groupId>-->
-<!--      <artifactId>poi-ooxml-schemas</artifactId>-->
-<!--      <version>${apache.poi.version}</version>-->
-<!--    </dependency>-->
-    <dependency>
-      <groupId>xml-apis</groupId>
-      <artifactId>xml-apis</artifactId>
-      <version>1.4.01</version>
-    </dependency>
+
+
+
+
 
     <dependency>
       <groupId>org.slf4j</groupId>

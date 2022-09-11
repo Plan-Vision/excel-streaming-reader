@@ -3,7 +3,7 @@ package com.monitorjbl.xlsx.sst;
 import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.openxml4j.opc.PackagePart;
 import org.apache.poi.ss.usermodel.RichTextString;
-import org.apache.poi.util.StaxHelper;
+import org.apache.poi.util.XMLHelper;
 import org.apache.poi.xssf.model.SharedStringsTable;
 import org.apache.poi.xssf.usermodel.XSSFRelation;
 import org.apache.poi.xssf.usermodel.XSSFRichTextString;
@@ -33,7 +33,7 @@ public class BufferedStringsTable extends SharedStringsTable implements AutoClos
   @Override
   public void readFrom(InputStream is) throws IOException {
     try {
-      XMLEventReader xmlEventReader = StaxHelper.newXMLInputFactory().createXMLEventReader(is);
+      XMLEventReader xmlEventReader = XMLHelper.newXMLInputFactory().createXMLEventReader(is);
 
       while(xmlEventReader.hasNext()) {
         XMLEvent xmlEvent = xmlEventReader.nextEvent();

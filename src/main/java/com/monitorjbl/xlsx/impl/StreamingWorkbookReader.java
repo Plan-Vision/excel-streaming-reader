@@ -11,10 +11,10 @@ import org.apache.poi.poifs.crypt.Decryptor;
 import org.apache.poi.poifs.crypt.EncryptionInfo;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.util.StaxHelper;
+import org.apache.poi.util.XMLHelper;
 import org.apache.poi.xssf.eventusermodel.XSSFReader;
 import org.apache.poi.xssf.eventusermodel.XSSFReader.SheetIterator;
-import org.apache.poi.xssf.model.SharedStringsTable;
+import org.apache.poi.xssf.model.SharedStrings;
 import org.apache.poi.xssf.model.StylesTable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,7 +50,7 @@ public class StreamingWorkbookReader implements Iterable<Sheet>, AutoCloseable {
   private File tmp;
   private File sstCache;
   private OPCPackage pkg;
-  private SharedStringsTable sst;
+  private SharedStrings sst;
   private boolean use1904Dates = false;
 
   /**
@@ -65,7 +65,7 @@ public class StreamingWorkbookReader implements Iterable<Sheet>, AutoCloseable {
    * @param builder  The builder containing all options
    */
   @Deprecated
-  public StreamingWorkbookReader(SharedStringsTable sst, File sstCache, OPCPackage pkg, StreamingSheetReader reader, Builder builder) {
+  public StreamingWorkbookReader(SharedStrings sst, File sstCache, OPCPackage pkg, StreamingSheetReader reader, Builder builder) {
     this.sst = sst;
     this.sstCache = sstCache;
     this.pkg = pkg;
@@ -141,7 +141,7 @@ public class StreamingWorkbookReader implements Iterable<Sheet>, AutoCloseable {
     }
   }
 
-  void loadSheets(XSSFReader reader, SharedStringsTable sst, StylesTable stylesTable, int rowCacheSize)
+  void loadSheets(XSSFReader reader, SharedStrings sst, StylesTable stylesTable, int rowCacheSize)
           throws IOException, InvalidFormatException, XMLStreamException {
     lookupSheetNames(reader);
 
@@ -158,7 +158,7 @@ public class StreamingWorkbookReader implements Iterable<Sheet>, AutoCloseable {
     //Iterate over the loaded streams
     int i = 0;
     for(URI uri : sheetStreams.keySet()) {
-      XMLEventReader parser = StaxHelper.newXMLInputFactory().createXMLEventReader(sheetStreams.get(uri));
+      XMLEventReader parser = XMLHelper.newXMLInputFactory().createXMLEventReader(sheetStreams.get(uri));
       sheets.add(new StreamingSheet(sheetProperties.get(i++).get("name"), new StreamingSheetReader(sst, stylesTable, parser, use1904Dates, rowCacheSize)));
     }
   }

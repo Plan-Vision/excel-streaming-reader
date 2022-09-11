@@ -11,7 +11,8 @@ import java.io.InputStream;
 
 public class PerformanceTest {
 
-  public static void main(String[] args) throws IOException {
+  @SuppressWarnings("unused")
+public static void main(String[] args) throws IOException {
     for(int i = 0; i < 10; i++) {
       long start = System.currentTimeMillis();
       InputStream is = new FileInputStream(new File("/Users/thundermoose/Downloads/SampleXLSFile_6800kb.xlsx"));

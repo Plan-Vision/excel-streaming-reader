@@ -24,7 +24,7 @@ import java.util.Date;
 public class StreamingCell implements Cell {
 
     private static final Supplier NULL_SUPPLIER = () -> null;
-    private static final String FALSE_AS_STRING = "0";
+    //private static final String FALSE_AS_STRING = "0";
     private static final String TRUE_AS_STRING = "1";
 
     private final Sheet sheet;
@@ -292,8 +292,9 @@ public class StreamingCell implements Cell {
                 return "numeric";
             case FORMULA:
                 return "formula";
+			default:
+				 return "#unknown cell type (" + cellType + ")#";
         }
-        return "#unknown cell type (" + cellType + ")#";
     }
 
     /**

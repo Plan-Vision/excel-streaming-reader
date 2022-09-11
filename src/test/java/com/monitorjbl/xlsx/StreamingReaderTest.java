@@ -26,11 +26,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Spliterator;
-import java.util.Spliterators;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
-
 import static org.apache.poi.ss.usermodel.CellType.BOOLEAN;
 import static org.apache.poi.ss.usermodel.CellType.NUMERIC;
 import static org.apache.poi.ss.usermodel.CellType.STRING;
@@ -599,6 +594,7 @@ public class StreamingReaderTest {
     }
   }
 
+  @SuppressWarnings("deprecation")
   @Test
   public void testMissingRattrs() throws Exception {
     try(
