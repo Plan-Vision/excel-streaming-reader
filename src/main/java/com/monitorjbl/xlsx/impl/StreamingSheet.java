@@ -12,6 +12,8 @@ import org.apache.poi.ss.usermodel.Drawing;
 import org.apache.poi.ss.usermodel.Footer;
 import org.apache.poi.ss.usermodel.Header;
 import org.apache.poi.ss.usermodel.Hyperlink;
+import org.apache.poi.ss.usermodel.PageMargin;
+import org.apache.poi.ss.usermodel.PaneType;
 import org.apache.poi.ss.usermodel.PrintSetup;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -510,7 +512,11 @@ public class StreamingSheet implements Sheet {
    */
   @Override
   public double getMargin(short margin) {
-    throw new UnsupportedOperationException();
+	  	throw new UnsupportedOperationException();
+  }
+  @Override
+  public double getMargin(PageMargin margin) {
+	    throw new UnsupportedOperationException();
   }
 
   /**
@@ -520,7 +526,11 @@ public class StreamingSheet implements Sheet {
   public void setMargin(short margin, double size) {
     throw new UnsupportedOperationException();
   }
-
+  @Override
+  public void setMargin(PageMargin margin, double size) {
+	    throw new UnsupportedOperationException();  	
+  }
+  
   /**
    * Not supported
    */
@@ -624,7 +634,10 @@ public class StreamingSheet implements Sheet {
   public void createSplitPane(int xSplitPos, int ySplitPos, int leftmostColumn, int topRow, int activePane) {
     throw new UnsupportedOperationException();
   }
-
+  @Override
+  public void createSplitPane(int xSplitPos, int ySplitPos, int leftmostColumn, int topRow, PaneType activePane) {
+	throw new UnsupportedOperationException();  	
+  }
   /**
    * Not supported
    */
@@ -1000,4 +1013,5 @@ public class StreamingSheet implements Sheet {
   public void setActiveCell(CellAddress cellAddress) {
     throw new UnsupportedOperationException();
   }
+
 }
